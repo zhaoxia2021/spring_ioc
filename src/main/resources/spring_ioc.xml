@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--用来设置bean的别名-->
+    <alias name="user" alias="u"></alias>
+    <!--bean中的name也可设置别名，多个别名用空格，分号或是冒号隔开-->
+    <bean class="com.beans.User" id="user" name="user3 user4,user5;user6"></bean>
+    <bean class="com.beans.User" id="user2">
+        <description>用来描述一个bean是干嘛的</description>
+    </bean>
+    <!--<import resource=""  有多个配置文件时，可以导入其他spring的xml配置文件-->
+
+    <!--**************************依赖注入 Begin**************************************************-->
+    <!--基于setter方法的依赖注入-->
+    <bean class="com.beans.User" id="user7">
+        <property name="id" value="1"></property>
+        <property name="username" value="尹二狗"></property>
+        <property name="realname" value="尹憨憨"></property>
+    </bean>
+    <!--基于构造函数方法的依赖注入
+    1.基于name属性设置构造函数参数
+    2.可以只有value属性
+      <bean class="com.beans.User" id="user8">
+        <constructor-arg  value="1"></constructor-arg>
+        <constructor-arg  value="尹二狗"></constructor-arg>
+        <constructor-arg  value="尹憨憨"></constructor-arg>
+     </bean>
+     3.如果省略name属性，一定注意参数顺序
+     4.如果参数顺序错乱，可以使用name，还可以使用index来设置参数的下标，从0开始
+     <bean class="com.beans.User" id="user8">
+        <constructor-arg  index=“0” value="1"></constructor-arg>
+        <constructor-arg  index=“1” value="尹二狗"></constructor-arg>
+        <constructor-arg  index=“2” value="尹憨憨"></constructor-arg>
+     </bean>
+     5.还可以使用type，在错乱的参数类型一致的情况下不能使用
+     <bean class="com.beans.User" id="user8">
+        <constructor-arg  type=“java.lang.Integer” value="1"></constructor-arg>
+        <constructor-arg  type=“java.lang.String” value="尹二狗"></constructor-arg>
+        <constructor-arg  type=“java.lang.String” value="尹憨憨"></constructor-arg>
+     </bean>
+    -->
+    <bean class="com.beans.User" id="user8">
+        <constructor-arg name="id" value="1"></constructor-arg>
+        <constructor-arg name="username" value="尹二狗"></constructor-arg>
+        <constructor-arg name="realname" value="尹憨憨"></constructor-arg>
+    </bean>
+    <!--**************************依赖注入 End**************************************************-->
+
+</beans>
